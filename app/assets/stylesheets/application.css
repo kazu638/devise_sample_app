@@ -20,7 +20,9 @@
    min-height: 100vh;
    /* width: 800px; */
    margin: 0;
-   background-color: green;
+   font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+   font-weight: 500;
+   /* background-color: green; */
  }
 
 .main{
@@ -36,4 +38,5 @@ header ul, footer ul{
 
 a{
   text-decoration: none;
+  color:inherit;
 }

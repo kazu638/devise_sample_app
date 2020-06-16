@@ -1,0 +1,30 @@
+.alert{
+  background-color:#f44336;
+}
+
+.notice{
+  background-color: #4CAF50;
+}
+
+.alert,.notice{
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  .closebtn{
+    color:white;
+    // font-weigh: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover{
+      color:black;
+    }
+  }
+}
+
+.close{
+  display: none;
+}

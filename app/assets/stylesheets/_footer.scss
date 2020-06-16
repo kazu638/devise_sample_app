@@ -1,0 +1,19 @@
+footer{
+  width: 100%;
+  background-color: pink;
+  .wrap-footer{
+    margin: auto;
+    max-width: 800px;
+    padding: 10px;
+    text-align: center;
+  }
+  .footer-about{
+    p{
+      font-size: 1.5rem;
+    }
+    li{
+      display: inline-block;
+      margin-left: 1rem;
+    }
+  }
+}

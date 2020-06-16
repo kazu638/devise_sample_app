@@ -1,0 +1,22 @@
+header{
+  width: 100%;
+  background-color: skyblue;
+  .wrap-header{
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    max-width: 800px;
+    padding:10px;
+    h1{
+      margin-right: auto;
+    }
+    .wrap-session-link{
+      margin: auto 0;
+    }
+    li{
+      display: inline-block;
+      margin-left: 3rem;
+    }
+  }
+}
+

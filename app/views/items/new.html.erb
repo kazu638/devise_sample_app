@@ -1,3 +1,5 @@
+<h2>投稿画面</h2>
+
 <%= form_with model:@item do |f| %>
   <p><%= f.label :name, "アイテム名" %></p>
   <p><%= f.text_field :name %></p>
@@ -5,3 +7,4 @@
   <p><%= f.number_field :price %></p>
   <p><%= f.submit "投稿" %></p>
 <% end %>
+<%=link_to "back", user_path(current_user.id) %>

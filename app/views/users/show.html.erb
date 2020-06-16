@@ -1,0 +1,23 @@
+<h2>アカウント画面</h2>
+<p>名前：<%= @user.name %></p>
+<p>メールアドレス：<%= @user.email %></p>
+<div class="post">
+  <%=link_to "新規投稿", new_item_path, class: "btn btn-dark" %>
+</div>
+<h3><%= @user.name %>様の投稿アイテム一覧</h3>
+  <% if @user.items.empty? %>
+    <p>投稿アイテムが存在しません。</p>
+  <% else %>
+    <%= paginate @items, window: 2 %>
+    <table>
+      <tr><th>名前</th><th>料金</th><th>操作</th>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price.to_s(:delimited) %>円</td>
+        <td><%= link_to "編集", edit_item_path(item.id) %>　<%= link_to "削除", item_path(item.id), method: :delete, data: { confirm: "削除しますか？" } %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= paginate @items, window: 2 %>
+  <% end %>

@@ -1,13 +1,17 @@
 <header>
   <div class="wrap-header">
-    <h1><%= link_to "deviseサンプル", root_path %></h1>
+    <h1><%= link_to "deviseサンプル", root_path, class:"noline" %></h1>
     <div class="wrap-session-link">
       <% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <ul>
+          <li><%= link_to_unless_current "トップ", items_path, class: "noline" %></li>
+          <li><%= link_to_unless_current "アカウント", user_path(current_user.id), class: "noline" %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, class: "noline", method: :delete %></li>
+        </ul>
       <% else %>
         <ul>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "新規登録", new_user_registration_path, class: "noline" %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: "noline" %></li>
         </ul>
       <% end %>
     </div>

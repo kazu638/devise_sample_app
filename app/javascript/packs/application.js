@@ -8,7 +8,11 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("../_flash")
+require("./_flash")
+
+import "bootstrap"
+import "../stylesheets/application"
+require("jquery")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

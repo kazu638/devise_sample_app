@@ -1,24 +1,20 @@
 <% if user_signed_in? %>
-  <h2>アカウント画面</h2>
-  <p><%= @user.name %>:<%= @user.email %></p>
-  <%=link_to "新規投稿", new_item_path, class: "post" %>
-  <h3>投稿一覧</h3>
-    <% if @items.empty? %>
-      <p>投稿データが存在しません。</p>
-    <% else %>
-      <table>
-        <tr><th>名前</th><th>料金</th><th>user_id</th><th>操作</th>
-      <% @items.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= item.price %>円</td>
-          <td><%= item.user_id %></td>
-          <td><%= link_to "編集", edit_item_path(item.id) %></td>
-          <td><%= link_to "削除", item_path(item.id), method: :delete, data: { confirm: "削除しますか？" } %></td>
-        </tr>
-      <% end %>
-      </table>
-    <% end %>
+  <h2>みんなの購入商品<small>(合計 <%= @items.total_count %> 件)</small></h2>
+  <small><%= @items.offset_value %>〜<%= @items.offset_value + @items.length %>件を表示しています。</small>
+  <%= paginate @items, window: 2 %>
+    <table>
+      <tr><th>ID</th><th>名前</th><th>料金</th><th>購入者</th>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.price.to_s(:delimited) %>円</td>
+            <td><%= item.user.name %></td>
+          </tr>
+        <% end %>
+    </table>
+
+    <%= paginate @items, window: 2 %>
 <% else %>
   <h2>deviseサンプルアプリへようこそ</h2>
   <p>新規登録かログインを行えばサービスを利用できます。</p>

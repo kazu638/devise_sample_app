@@ -7,3 +7,5 @@
   <p><%= f.number_field :price %></p>
   <p><%= f.submit "投稿" %></p>
 <% end %>
+
+<%=link_to "back", user_path(current_user.id) %>

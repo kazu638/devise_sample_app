@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :move_to_index, except: :index
   def index
-    @user = User.find(current_user.id) if current_user
-    @items = Item.where(user_id: current_user.id) if current_user
+    @items = Item.includes(:user).page(params[:page]).per(20)
   end
 
   def new
@@ -13,7 +12,7 @@ class ItemsController < ApplicationController
     @item = Item.new(name: item_params[:name], price: item_params[:price], user_id: current_user.id)
     begin
       if @item.save
-        redirect_to items_path, notice: "投稿に成功しました。"
+        redirect_to user_path(current_user.id), notice: "投稿に成功しました。"
       else
         flash.now[:alert] = "投稿に失敗しました。"
         render :new
@@ -31,7 +30,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     begin
       if item.update(item_params)
-        redirect_to items_path, notice: "編集に成功しました。"
+        redirect_to user_path(current_user.id), notice: "編集に成功しました。"
       else
         flash.now[:alert] = "編集に失敗しました。"
         render :edit
